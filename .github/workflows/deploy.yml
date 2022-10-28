@@ -14,12 +14,12 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
+          cd demo
           npm install
           npm run build
 
-      - name: Run Tests 🧪
+      - name: Cleanup
         run: |
-          npm run test
           rm -rf demo/node_modules \
             .gitignore \
             index.js \
