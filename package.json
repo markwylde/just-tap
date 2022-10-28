@@ -1,0 +1,35 @@
+{
+  "name": "just-tap",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A simple tap test runner that can be used in any client/server javascript app.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "c8 node test"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/waitUntil.js"
+  ],
+  "keywords": [
+    "tap",
+    "test"
+  ],
+  "author": "Mark Wylde <me@markwylde.com> (https://github.com/markwylde)",
+  "license": "MIT",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {
+    "c8": "^7.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markwylde/just-tap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/markwylde/just-tap/issues"
+  },
+  "homepage": "https://github.com/markwylde/just-tap#readme"
+}
