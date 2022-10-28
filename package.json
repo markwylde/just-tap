@@ -1,0 +1,25 @@
+{
+  "name": "just-tap-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "servatron --http2 --port 8000 & NODE_ENV=development npm run watch",
+    "build": "esbuild         --define:process.env.NODE_ENV=\\'production\\'  --bundle --outfile=index.min.js index.js",
+    "watch": "esbuild --watch --define:process.env.NODE_ENV=\\'development\\' --bundle --outfile=index.min.js index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.15.12",
+    "servatron": "^2.4.2"
+  },
+  "dependencies": {
+    "@codemirror/lang-javascript": "^6.1.1",
+    "ansi-to-html": "^0.7.2",
+    "codemirror": "^6.0.1",
+    "debounce": "^1.2.1"
+  }
+}
