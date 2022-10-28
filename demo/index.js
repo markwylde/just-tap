@@ -49,7 +49,7 @@ async function execute () {
   codeOutput.classList.remove('error');
   try {
     const code = editor.state.doc.toString();
-    (0, eval)(`
+    await (0, eval)(`
       (async () => {
         const convert = new AnsiToHTML({
           newline: true,

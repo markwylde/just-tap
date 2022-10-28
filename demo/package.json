@@ -6,7 +6,7 @@
   "scripts": {
     "start": "servatron --http2 --port 8000 & NODE_ENV=development npm run watch",
     "build": "esbuild         --define:process.env.NODE_ENV=\\'production\\'  --bundle --outfile=index.min.js index.js",
-    "watch": "esbuild --watch --define:process.env.NODE_ENV=\\'development\\' --bundle --outfile=index.min.js index.js",
+    "watch": "esbuild --watch --sourcemap=inline --define:process.env.NODE_ENV=\\'development\\' --bundle --outfile=index.min.js index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
