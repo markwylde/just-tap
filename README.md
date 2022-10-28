@@ -8,7 +8,7 @@ npm install --save-dev just-tap
 
 ## Usage
 ```javascript
-import createTestSuite from '../lib/index.js';
+import createTestSuite from 'just-tap';
 
 const { test, run } = createTestSuite();
 
