@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>just-tap</title>
+  <script src="index.min.js" defer></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .editor {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .editor > *:first-child {
+      width: 60%;
+    }
+    .error {
+      color: red;
+    }
+
+    @media only screen and (min-width: 800px) {
+      .editor {
+        flex-direction: row;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>just-tap</h1>
+  <p>A simple tap test runner that can be used in any client/server javascript app.</p>
+  <a href="https://github.com/markwylde/just-tap">github</a>
+
+  <div class="editor">
+    <div>
+      <h2>Test Suite</h2>
+      <div id="codeInput"></div>
+    </div>
+
+    <div>
+      <h2>Result</h2>
+      <pre><code id="codeOutput">Running</code></pre>
+    </div>
+  </div>
+</body>
+</html>
