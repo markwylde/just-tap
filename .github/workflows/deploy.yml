@@ -20,7 +20,8 @@ jobs:
 
       - name: Cleanup
         run: |
-          rm -rf demo/node_modules \
+          cd demo
+          rm -rf node_modules \
             .gitignore \
             index.js \
             package-lock.json \
