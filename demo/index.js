@@ -41,7 +41,7 @@ test('planned async', t => {
 });
 
 const results = await run();
-console.log(results);
+console.log('\\nReturned:', results);
 `.slice(1),
   extensions: [basicSetup, javascript()],
   parent: codeInput
