@@ -37,7 +37,7 @@ test('planned async', t => {
 
   setTimeout(() => {
     t.pass('will not complete test until this is called')
-  }, 500)
+  }, 100)
 });
 
 const results = await run();
