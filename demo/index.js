@@ -21,7 +21,6 @@ test('correct assertions', t => {
   t.notOk(false);
 });
 
-
 test('wrong assertions', t => {
   t.equal(1, 2);
   t.notEqual(1, 1);
@@ -84,7 +83,7 @@ async function execute () {
 
 execute();
 
-const executeDebounce = debounce(execute, 150);
+const executeDebounce = debounce(execute, 500);
 codeInput.addEventListener('input', executeDebounce);
 codeInput.addEventListener('change', executeDebounce);
 codeInput.addEventListener('keypress', executeDebounce);
