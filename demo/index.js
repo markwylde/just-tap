@@ -32,6 +32,14 @@ test('wrong assertions', t => {
   t.notOk(true);
 });
 
+test('planned async', t => {
+  t.plan(1);
+
+  setTimeout(() => {
+    t.pass('will not complete test until this is called')
+  }, 500)
+});
+
 const results = await run();
 console.log(results);
 `.slice(1),
