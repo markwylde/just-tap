@@ -53,7 +53,7 @@ If provided, will wait until the specified number of assertions have been made b
 
 It will also fail the test if too many assertions are made.
 
-### t.timeout(milliseconds: number) !default: 5000
+### t.timeout(milliseconds: number) !default: none
 If you have an async task that is running for longer than the timeout, or you are waiting for planned assertions, then the test will fail.
 
 ### Assertions
@@ -73,7 +73,16 @@ The following options are default, and don't need to be included.
 
 ```javascript
 const { test, run } = createTestSuite({
+  // What function is used for streaming logs
+  // By default logs are streamed to console.log
   logger: console.log,
+
+  // How many tests will run at the same time?
+  // By default, all run at once.
+  concurrency: Infinity,
+
+  // This adds a small amount of color
+  // You can override these `text => text`
   formatInfo: text => `\x1b[96m${text}\x1b[39m\x1b[39m`,
   formatDanger: text => `\x1b[91m${text}\x1b[39m\x1b[39m`,
   formatSuccess: text => `\x1b[92m${text}\x1b[39m\x1b[39m`
