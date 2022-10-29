@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "servatron --http2 --port 8000 & NODE_ENV=development npm-run-all --parallel main:watch worker:watch",
+    "build": "NODE_ENV=production npm-run-all --parallel main:build worker:build",
     "main:build": "esbuild         --define:process.env.NODE_ENV=\\'production\\'  --bundle --outfile=index.min.js index.js",
     "main:watch": "esbuild --watch --sourcemap=inline --define:process.env.NODE_ENV=\\'development\\' --bundle --outfile=index.min.js index.js",
     "worker:build": "esbuild         --define:process.env.NODE_ENV=\\'production\\'  --bundle --outfile=worker.min.js worker.js",
