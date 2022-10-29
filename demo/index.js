@@ -2,10 +2,6 @@ import AnsiToHTML from 'ansi-to-html';
 import debounce from 'debounce';
 import { EditorView, basicSetup } from 'codemirror';
 import { javascript } from '@codemirror/lang-javascript';
-import realCreateTestSuite from '../';
-
-window.realCreateTestSuite = realCreateTestSuite;
-window.AnsiToHTML = AnsiToHTML;
 
 const codeInput = document.querySelector('#codeInput');
 const codeOutput = document.querySelector('#codeOutput');
@@ -44,50 +40,46 @@ console.log(results);
   parent: codeInput
 });
 
+let worker;
 async function execute () {
+  const code = editor.state.doc.toString();
+
+  const convert = new AnsiToHTML({
+    newline: true,
+    colors: {
+      9: '#be0000',
+      10: '#1b951e',
+      14: '#0d6978'
+    }
+  });
+
+  const stringify = what => {
+    if (typeof what === 'object') {
+      return JSON.stringify(what, null, 2);
+    } else {
+      return what;
+    }
+  };
+
+  worker && worker.terminate();
+  worker = new Worker('./worker.min.js');
+  worker.postMessage(code);
+
+  worker.addEventListener('message', event => {
+    if (event.data[0] === 'log') {
+      codeOutput.innerHTML = codeOutput.innerHTML +
+        convert.toHtml(event.data[1].map(stringify).join(' ') + '\n');
+      return;
+    }
+
+    if (event.data[0] === 'error') {
+      codeOutput.classList.add('error');
+      codeOutput.innerHTML = event.data[1];
+    }
+  });
+
   codeOutput.innerHTML = '';
   codeOutput.classList.remove('error');
-  try {
-    const code = editor.state.doc.toString();
-    await (0, eval)(`
-      (async () => {
-        const convert = new AnsiToHTML({
-          newline: true,
-          colors: {
-            9: '#be0000',
-            10: '#1b951e',
-            14: '#0d6978',
-          }
-        });
-
-        const stringify = what => {
-          if (typeof what === 'object') {
-            return JSON.stringify(what, null, 2);
-          } else {
-            return what;
-          }
-        }
-        const console = {
-          log: (...args) => {
-            codeOutput.innerHTML = codeOutput.innerHTML +
-              convert.toHtml(args.map(stringify).join(' ') + '\\n')
-          }
-        };
-
-        const createTestSuite = (options) => {
-          return realCreateTestSuite({
-            logger: console.log,
-            ...options
-          })
-        }
-
-        ${code}
-      })();
-    `);
-  } catch (error) {
-    codeOutput.classList.add('error');
-    codeOutput.innerHTML = error;
-  }
 }
 
 execute();
