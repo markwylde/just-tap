@@ -19,9 +19,6 @@
       flex-direction: column;
       gap: 20px;
     }
-    .editor > *:first-child {
-      width: 60%;
-    }
     .error {
       color: red;
     }
@@ -29,6 +26,9 @@
     @media only screen and (min-width: 800px) {
       .editor {
         flex-direction: row;
+      }
+      .editor > *:first-child {
+        width: 60%;
       }
     }
   </style>
