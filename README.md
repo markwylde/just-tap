@@ -95,17 +95,17 @@ if (!results.success) {
 ```
 
 ## Why another test runner?
-Most test runners do a load of magic and include a lot of features.
+Most test runners include a lot of features and do a lot of magic.
 
-They magically/automatically:
+They automatically (magically?):
 - search and include test files
-- run the tests
-- inject test methods like describe/it
-- add a hooks system for managing before/after events
+- run the tests for you
+- inject test methods like `describe`/`it`
+- add a hooks system for managing `before`/`after` events
 - use cli's to manage the auto inclusion of the test runner
-- use event systems for capturing when tests fail
+- use event systems for capturing when tests fail/succeed/finish
 
-These features can be create a great foundation for writing and running tests, but these features also come with their own burden.
+These features can create a great foundation for writing and running tests, but they also come with their own management and overhead.
 
 This library aims to provide a bare bones test runner with zero magic.
 
