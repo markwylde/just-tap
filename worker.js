@@ -2,6 +2,10 @@ import realCreateTestSuite from '../';
 
 self.realCreateTestSuite = realCreateTestSuite;
 
+self.addEventListener('error', error => {
+  self.postMessage(['error', error.message]);
+});
+
 self.addEventListener('message', async event => {
   try {
     const pre = `
@@ -28,6 +32,6 @@ self.addEventListener('message', async event => {
     `);
     self.postMessage(['finish']);
   } catch (error) {
-    self.postMessage(['error', error]);
+    self.postMessage(['error', error.message]);
   }
 });
