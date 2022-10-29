@@ -26,6 +26,26 @@ test('wrong assertions', t => {
   t.fail();
 });
 
+test('waitFor', async t => {
+  t.plan(1);
+  let a = 0;
+
+  setTimeout(() => a = 1, 200);
+
+  await t.waitFor(() => {
+    t.equal(a, 1);
+  }, 500);
+});
+
+test('waitFor times out', async t => {
+  t.plan(1);
+  let a = 0;
+
+  await t.waitFor(() => {
+    t.equal(a, 1);
+  }, 500);
+});
+
 test('with delay', async t => {
   t.plan(1);
 
@@ -54,3 +74,9 @@ for (let i = 0; i < 5; i++) {
 
 const results = await run();
 console.log(results);
+
+if (JSON.stringify(results) !== JSON.stringify(
+  { passed: 9, failed: 2, ok: 17, notOk: 12, skipped: 0, success: false }
+)) {
+  throw new Error('Test results were not as expected');
+}

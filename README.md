@@ -56,6 +56,13 @@ It will also fail the test if too many assertions are made.
 ### t.timeout(milliseconds: number) !default: none
 If you have an async task that is running for longer than the timeout, or you are waiting for planned assertions, then the test will fail.
 
+### t.waitFor(fn: function, timeout: number)
+A promise based function that will continuously try and execute the first argument until:
+- no `notOk`'s are raised
+- it does not throw
+
+All assertions are discarded until the final pass.
+
 ### Assertions
 ```javascript
 t.pass('passed');
