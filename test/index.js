@@ -1,6 +1,6 @@
 import createTestSuite from '../lib/index.js';
 
-const { test, run } = createTestSuite({ concurrency: 1 });
+const { test, run } = createTestSuite({ concurrency: 3 });
 
 test('correct assertions', t => {
   t.equal(1, 1);
@@ -11,6 +11,7 @@ test('correct assertions', t => {
   t.notDeepEqual({ a: 1 }, { a : 2 });
   t.ok(true);
   t.notOk(false);
+  t.pass();
 });
 
 test('wrong assertions', t => {
@@ -22,6 +23,7 @@ test('wrong assertions', t => {
   t.notDeepEqual({ a: 1 }, { a : 1 });
   t.ok(false);
   t.notOk(true);
+  t.fail();
 });
 
 test('with delay', async t => {
@@ -42,7 +44,7 @@ test('throws', async t => {
   }
 });
 
-for (let i = 0; i < 40; i++) {
+for (let i = 0; i < 5; i++) {
   test('for concurrency ' + i, async t => {
     t.plan(1);
     await new Promise(resolve => setTimeout(resolve, 500));

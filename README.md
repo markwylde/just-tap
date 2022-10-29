@@ -58,6 +58,8 @@ If you have an async task that is running for longer than the timeout, or you ar
 
 ### Assertions
 ```javascript
+t.pass('passed');
+t.fail('failed');
 t.equal(1, 1, 'expected "1" to equal "1"');
 t.notEqual(1, 2, 'expected "1" to not equal "2"');
 t.looseEqual(1, 1, 'expected "1" to loose equal "1"');
