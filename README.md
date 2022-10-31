@@ -69,7 +69,7 @@ t.pass('passed');
 t.fail('failed');
 t.equal(1, 1, 'expected "1" to equal "1"');
 t.notEqual(1, 2, 'expected "1" to not equal "2"');
-t.looseEqual(1, 1, 'expected "1" to loose equal "1"');
+t.looseEqual(1, '1', 'expected "1" to loose equal "1"');
 t.notLooseEqual(1, '2', 'expected "1" to not loose equal "2"');
 t.deepEqual({ a: 1 }, { a: 1 }, 'expected {"a":1} to deep equal {"a":1}');
 t.notDeepEqual({ a: 1 }, { a: 2 }, 'expected {"a":1} to not deep equal {"a":2}');
