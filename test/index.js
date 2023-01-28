@@ -2,6 +2,8 @@ import createTestSuite from '../lib/index.js';
 
 const { test, run } = createTestSuite({ concurrency: 3 });
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 test('correct assertions', t => {
   t.equal(1, 1);
   t.notEqual(1, 2);
@@ -46,6 +48,20 @@ test('waitFor times out', async t => {
   }, 500);
 });
 
+test('async waitFor', async t => {
+  t.plan(1);
+  let counter = 0;
+  await t.waitFor(async () => {
+    counter = counter + 1
+    t.equal(counter, 5);
+    await sleep(50);
+  }, 500);
+});
+
+test.todo('waitFor - only outputs last error');
+
+test.skip('waitFor - only outputs last error', () => {});
+
 test('with delay', async t => {
   t.plan(1);
 
@@ -76,7 +92,15 @@ const results = await run();
 console.log(results);
 
 if (JSON.stringify(results) !== JSON.stringify(
-  { passed: 9, failed: 2, ok: 17, notOk: 12, skipped: 0, success: false }
+  {
+    passed: 10,
+    failed: 2,
+    ok: 18,
+    notOk: 10,
+    skipped: 1,
+    todo: 1,
+    success: false
+  }
 )) {
   throw new Error('Test results were not as expected');
 }
