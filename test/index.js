@@ -9,8 +9,8 @@ test('correct assertions', t => {
   t.notEqual(1, 2);
   t.looseEqual(1, '1');
   t.notLooseEqual(1, '2');
-  t.deepEqual({ a: 1 }, { a : 1 });
-  t.notDeepEqual({ a: 1 }, { a : 2 });
+  t.deepEqual({ a: 1 }, { a: 1 });
+  t.notDeepEqual({ a: 1 }, { a: 2 });
   t.ok(true);
   t.notOk(false);
   t.pass();
@@ -21,8 +21,8 @@ test('wrong assertions', t => {
   t.notEqual(1, 1);
   t.looseEqual(1, '2');
   t.notLooseEqual(1, '1');
-  t.deepEqual({ a: 1 }, { a : 2 });
-  t.notDeepEqual({ a: 1 }, { a : 1 });
+  t.deepEqual({ a: 1 }, { a: 2 });
+  t.notDeepEqual({ a: 1 }, { a: 1 });
   t.ok(false);
   t.notOk(true);
   t.fail();
@@ -32,7 +32,7 @@ test('waitFor', async t => {
   t.plan(1);
   let a = 0;
 
-  setTimeout(() => a = 1, 200);
+  setTimeout(() => { a = 1; }, 200);
 
   await t.waitFor(() => {
     t.equal(a, 1);
@@ -41,7 +41,7 @@ test('waitFor', async t => {
 
 test('waitFor times out', async t => {
   t.plan(1);
-  let a = 0;
+  const a = 0;
 
   await t.waitFor(() => {
     t.equal(a, 1);
@@ -52,7 +52,7 @@ test('async waitFor', async t => {
   t.plan(1);
   let counter = 0;
   await t.waitFor(async () => {
-    counter = counter + 1
+    counter = counter + 1;
     t.equal(counter, 5);
     await sleep(50);
   }, 500);

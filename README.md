@@ -92,9 +92,10 @@ const { test, run } = createTestSuite({
 
   // This adds a small amount of color
   // You can override these `text => text`
-  formatInfo: text => `\x1b[96m${text}\x1b[39m\x1b[39m`,
-  formatDanger: text => `\x1b[91m${text}\x1b[39m\x1b[39m`,
-  formatSuccess: text => `\x1b[92m${text}\x1b[39m\x1b[39m`
+  formatInfo: text => `\x1b[96m${text}\x1b[0m`,
+  formatSource: text => `\x1b[90m${text}\x1b[0m`,
+  formatDanger: text => `\x1b[91m${text}\x1b[0m`,
+  formatSuccess: text => `\x1b[92m${text}\x1b[0m`
 });
 ```
 
