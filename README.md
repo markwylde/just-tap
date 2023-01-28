@@ -1,5 +1,5 @@
 # just-tap
-A simple tap test runner that can be used in any client/server javascript app.
+A simple [tap](https://testanything.org) test runner that can be used in any client/server javascript app.
 
 ## Installation
 ```
