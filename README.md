@@ -24,7 +24,9 @@ test('calculate 1 + 1 wrong', t => {
   t.equal(1 + 1, 3);
 });
 
-const results = await run();
+// How many tests will run at the same time?
+// By default, all run at once.
+const results = await run({ concurrency: Infinity });
 // results === {
 //   passed: 1, failed: 1, ok: 1, notOk: 1, skipped: 0, success: false
 // }
@@ -85,10 +87,6 @@ const { test, run } = createTestSuite({
   // What function is used for streaming logs
   // By default logs are streamed to console.log
   logger: console.log,
-
-  // How many tests will run at the same time?
-  // By default, all run at once.
-  concurrency: Infinity,
 
   // This adds a small amount of color
   // You can override these `text => text`
