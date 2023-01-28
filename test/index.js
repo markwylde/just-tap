@@ -1,6 +1,6 @@
 import createTestSuite from '../lib/index.js';
 
-const { test, run } = createTestSuite({ concurrency: 3 });
+const { test, run } = createTestSuite();
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -88,7 +88,7 @@ for (let i = 0; i < 5; i++) {
   });
 }
 
-const results = await run();
+const results = await run({ concurrency: 5 });
 console.log(results);
 
 if (JSON.stringify(results) !== JSON.stringify(

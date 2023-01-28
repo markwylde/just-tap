@@ -106,7 +106,9 @@ const { test, run } = createTestSuite({
   logger: (...args) => log.push(args),
 });
 
-const results = await run();
+// default concurrency is Infinity, meaning
+// all tests will run at the same time
+const results = await run({ concurrency: 1 });
 if (!results.success) {
   console.log(log);
 }
