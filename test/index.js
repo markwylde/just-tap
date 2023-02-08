@@ -28,6 +28,31 @@ test('wrong assertions', t => {
   t.fail();
 });
 
+test('custom message', t => {
+  t.equal(1, 1, 'custom message');
+  t.notEqual(1, 2, 'custom message');
+  t.looseEqual(1, '1', 'custom message');
+  t.notLooseEqual(1, '2', 'custom message');
+  t.deepEqual({ a: 1 }, { a: 1 }, 'custom message');
+  t.notDeepEqual({ a: 1 }, { a: 2 }, 'custom message');
+  t.ok(true, 'custom message');
+  t.notOk(false, 'custom message');
+  t.pass('custom message');
+});
+
+
+test('wrong assertions with custom message', t => {
+  t.equal(1, 2, 'custom message');
+  t.notEqual(1, 1, 'custom message');
+  t.looseEqual(1, '2', 'custom message');
+  t.notLooseEqual(1, '1', 'custom message');
+  t.deepEqual({ a: 1 }, { a: 2 }, 'custom message');
+  t.notDeepEqual({ a: 1 }, { a: 1 }, 'custom message');
+  t.ok(false, 'custom message');
+  t.notOk(true, 'custom message');
+  t.fail('custom message');
+});
+
 test('waitFor', async t => {
   t.plan(1);
   let a = 0;
@@ -93,10 +118,10 @@ console.log(results);
 
 if (JSON.stringify(results) !== JSON.stringify(
   {
-    passed: 10,
-    failed: 2,
-    ok: 18,
-    notOk: 10,
+    passed: 11,
+    failed: 3,
+    ok: 27,
+    notOk: 19,
     skipped: 1,
     todo: 1,
     success: false
