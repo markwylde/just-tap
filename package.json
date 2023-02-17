@@ -34,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/markwylde/just-tap/issues"
   },
-  "homepage": "https://github.com/markwylde/just-tap#readme"
+  "homepage": "https://github.com/markwylde/just-tap#readme",
+  "dependencies": {
+    "deep-equal": "^2.2.0"
+  }
 }
