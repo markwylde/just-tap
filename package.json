@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/markwylde/just-tap#readme",
   "dependencies": {
-    "deep-equal": "^2.2.0"
+    "deep-equal": "^2.2.0",
+    "diff": "^5.1.0"
   }
 }

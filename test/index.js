@@ -33,20 +33,31 @@ test('custom message', t => {
   t.notEqual(1, 2, 'custom message');
   t.looseEqual(1, '1', 'custom message');
   t.notLooseEqual(1, '2', 'custom message');
-  t.deepEqual({ a: 1 }, { a: 1 }, 'custom message');
+  t.deepEqual({
+    a: 1,
+    b: 2
+  }, {
+    b: 2,
+    a: 1
+  }, 'custom message');
   t.notDeepEqual({ a: 1 }, { a: 2 }, 'custom message');
   t.ok(true, 'custom message');
   t.notOk(false, 'custom message');
   t.pass('custom message');
 });
 
-
 test('wrong assertions with custom message', t => {
   t.equal(1, 2, 'custom message');
   t.notEqual(1, 1, 'custom message');
   t.looseEqual(1, '2', 'custom message');
   t.notLooseEqual(1, '1', 'custom message');
-  t.deepEqual({ a: 1 }, { a: 2 }, 'custom message');
+  t.deepEqual({
+    a: 1,
+    b: 1
+  }, {
+    b: 2,
+    a: 1
+  }, 'custom message');
   t.notDeepEqual({ a: 1 }, { a: 1 }, 'custom message');
   t.ok(false, 'custom message');
   t.notOk(true, 'custom message');
