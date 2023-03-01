@@ -65,6 +65,29 @@ A promise based function that will continuously try and execute the first argume
 
 All assertions are discarded until the final pass.
 
+### Cleanup
+You can run a cleanup function when all `planned` tests have finished.
+
+```javascript
+test('cleanup', async t => {
+  t.plan(1);
+
+  const server = http.createServer((request, response) => {
+    response.end('ok');
+  }).listen(8080);
+
+  fetch('http://localhost:8080')
+    .then(response => response.text())
+    .then(text => {
+      t.equal(text, 'ok');
+    });
+
+  return () => {
+    server.close();
+  };
+});
+```
+
 ### Assertions
 ```javascript
 t.pass('passed');

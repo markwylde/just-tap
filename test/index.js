@@ -64,6 +64,19 @@ test('wrong assertions with custom message', t => {
   t.fail('custom message');
 });
 
+let didCleanup = false;
+test('cleanup is run', async t => {
+  t.plan(1);
+
+  setTimeout(() => {
+    t.pass();
+  }, 100);
+
+  return () => {
+    didCleanup = true;
+  };
+});
+
 test('waitFor', async t => {
   t.plan(1);
   let a = 0;
@@ -127,11 +140,15 @@ for (let i = 0; i < 5; i++) {
 const results = await run({ concurrency: 5 });
 console.log(results);
 
+if (!didCleanup) {
+  throw new Error('cleanup is not being run');
+}
+
 if (JSON.stringify(results) !== JSON.stringify(
   {
-    passed: 11,
+    passed: 12,
     failed: 3,
-    ok: 27,
+    ok: 28,
     notOk: 19,
     skipped: 1,
     todo: 1,
