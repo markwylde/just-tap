@@ -117,6 +117,7 @@ const { test, run } = createTestSuite({
   formatSource: text => `\x1b[90m${text}\x1b[0m`,
   formatDanger: text => `\x1b[91m${text}\x1b[0m`,
   formatSuccess: text => `\x1b[92m${text}\x1b[0m`,
+  formatValue: (text, command, isOk) => JSON.stringify(text),
   formatDiffNormal: text => `\x1b[90m${text}\x1b[0m`,
   formatDiffAdded: text => `\x1b[92m${text}\x1b[0m`,
   formatDiffRemoved: text => `\x1b[91m${text}\x1b[0m`
