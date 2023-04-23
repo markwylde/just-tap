@@ -1,7 +1,7 @@
 {
   "name": "just-tap",
   "type": "module",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "A simple tap test runner that can be used in any client/server javascript app.",
   "main": "lib/index.js",
   "scripts": {
