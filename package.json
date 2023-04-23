@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "c8": "^7.13.0",
-    "eslint": "^8.35.0",
+    "eslint": "^8.39.0",
     "eslint-config-standard": "^17.0.0"
   },
   "repository": {

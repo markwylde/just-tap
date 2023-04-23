@@ -100,6 +100,8 @@ t.deepEqual({ a: 1 }, { a: 1 }, 'expected {"a":1} to deep equal {"a":1}');
 t.notDeepEqual({ a: 1 }, { a: 2 }, 'expected {"a":1} to not deep equal {"a":2}');
 t.ok(true, 'expected "true" to be truthy');
 t.notOk(false, 'expected "false" to be falsy');
+t.match('hello world', /world/, 'string should match regex');
+t.notMatch('hello world', /unicorn/, 'string should not match regex');
 ```
 
 ## Advanced Usage

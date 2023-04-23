@@ -14,6 +14,8 @@ test('correct assertions', t => {
   t.ok(true);
   t.notOk(false);
   t.pass();
+  t.match('hello world', /world/, 'string should match regex');
+  t.notMatch('hello world', /unicorn/, 'string should not match regex');
 });
 
 test('wrong assertions', t => {
@@ -26,6 +28,8 @@ test('wrong assertions', t => {
   t.ok(false);
   t.notOk(true);
   t.fail();
+  t.match('hello world', /unicorn/, 'string should not match regex');
+  t.notMatch('hello world', /world/, 'string should match regex');
 });
 
 test('custom message', t => {
@@ -148,8 +152,8 @@ if (JSON.stringify(results) !== JSON.stringify(
   {
     passed: 12,
     failed: 3,
-    ok: 28,
-    notOk: 19,
+    ok: 30,
+    notOk: 21,
     skipped: 1,
     todo: 1,
     success: false
