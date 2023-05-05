@@ -62,9 +62,9 @@ async function execute () {
 
   const stringify = what => {
     if (typeof what === 'object') {
-      return JSON.stringify(what, null, 2);
+      return JSON.stringify(what, null, 2).replace(/</g, '&lt;');
     } else {
-      return what;
+      return what.replace(/</g, '&lt;');
     }
   };
 
