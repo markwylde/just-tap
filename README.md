@@ -102,6 +102,8 @@ t.ok(true, 'expected "true" to be truthy');
 t.notOk(false, 'expected "false" to be falsy');
 t.match('hello world', /world/, 'string should match regex');
 t.notMatch('hello world', /unicorn/, 'string should not match regex');
+t.throws(() => { throw new Error('wopps') }, { message: 'woops' }, 'should throw error');
+t.notThrows(() => 'test', 'should not throw error');
 ```
 
 ## Advanced Usage

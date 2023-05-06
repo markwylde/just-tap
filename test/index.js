@@ -133,6 +133,26 @@ test('throws', async t => {
   }
 });
 
+test('throws works', t => {
+  t.plan(1);
+
+  const throwAnError = () => {
+    throw new Error('woops');
+  };
+
+  t.throws(throwAnError, {
+    message: 'woops'
+  });
+});
+
+test('notThrows works', t => {
+  t.plan(1);
+
+  const throwAnError = () => {};
+
+  t.notThrows(throwAnError);
+});
+
 for (let i = 0; i < 5; i++) {
   test('for concurrency ' + i, async t => {
     t.plan(1);
@@ -150,9 +170,9 @@ if (!didCleanup) {
 
 if (JSON.stringify(results) !== JSON.stringify(
   {
-    passed: 12,
+    passed: 14,
     failed: 3,
-    ok: 30,
+    ok: 32,
     notOk: 21,
     skipped: 1,
     todo: 1,
