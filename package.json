@@ -24,9 +24,9 @@
     "test": "test"
   },
   "devDependencies": {
-    "c8": "^7.13.0",
-    "eslint": "^8.39.0",
-    "eslint-config-standard": "^17.0.0"
+    "c8": "^7.14.0",
+    "eslint": "^8.42.0",
+    "eslint-config-standard": "^17.1.0"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/markwylde/just-tap#readme",
   "dependencies": {
-    "deep-equal": "^2.2.0",
+    "deep-equal": "^2.2.1",
     "diff": "^5.1.0"
   }
 }
