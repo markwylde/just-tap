@@ -1,6 +1,14 @@
 # just-tap
 A simple [tap](https://testanything.org) test runner that can be used in any client/server javascript app.
 
+> **Archived**
+>
+> I'm archiving the project as it's now basically built into nodejs, and on npmjs too.
+> 
+> The only difference is it doesn't have plan.
+> 
+> If you want plan, look at my [assert-plan](https://github.com/markwylde/assert-plan) project.
+
 ## Installation
 ```
 npm install --save-dev just-tap
